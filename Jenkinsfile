@@ -3,11 +3,11 @@ pipeline {
     agent {label 'php'}
 
     stages {
-        stage('SCM Checkout') {
+        stage('Pull Code') {
             steps {
-                // Checkout your source code from version control
-                 echo 'SCM'
-                git 'https://github.com/Anurag-Evervent/jenkins-cicd-php-demo.git'
+                // Checkout code from the GitHub repository
+                checkout([$class: 'GitSCM', branches: [[name: '*/Development']], 
+                          userRemoteConfigs: [[url: 'https://github.com/Anurag-Evervent/jenkins-cicd-php-demo.git']]])
             }
         }
     }
