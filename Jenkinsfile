@@ -1,10 +1,13 @@
 pipeline {
-    agent any
+
+    agent {label 'php'}
 
     stages {
-        stage('Deploy PHP application') {
+        stage('SCM Checkout') {
             steps {
-                sshPublisher(publishers: [sshPublisherDesc(configName: 'php_server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/var/www/html/', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/*.php')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                // Checkout your source code from version control
+                 echo 'SCM'
+                git 'https://github.com/Anurag-Evervent/jenkins-cicd-php-demo.git'
             }
         }
     }
