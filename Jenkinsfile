@@ -1,6 +1,7 @@
 pipeline {
-
-    agent {label 'php'}
+    agent {
+        label 'php'
+    }
 
     stages {
         stage('Pull Code') {
@@ -10,12 +11,12 @@ pipeline {
                           userRemoteConfigs: [[url: 'https://github.com/Anurag-Evervent/jenkins-cicd-php-demo.git']]])
             }
         }
+    }
 
-         post {
+    post {
         always {
             // Clean up resources or do any other necessary post-processing steps
             echo "Pipeline execution completed."
         }
-    }
     }
 }
