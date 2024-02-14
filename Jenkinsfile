@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'php'
+        label 'ph'
     }
 
     stages {
